@@ -32,5 +32,14 @@ namespace KnockServer
             Properties.Settings.Default.Save();
             Program.RegisterAutoLaunchApp();
         }
+
+        private void onClose(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                WindowState = FormWindowState.Minimized;
+                e.Cancel = true;
+            }
+        }
     }
 }

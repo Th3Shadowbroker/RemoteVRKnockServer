@@ -179,6 +179,8 @@ namespace KnockServer
 
         WebServiceHost hostWeb;
 
+        private static InfoForm infoForm;
+
         public CustomApplicationContext()
         {
             trayIcon = new NotifyIcon()
@@ -238,7 +240,7 @@ namespace KnockServer
             }
         
             Program.RegisterAutoLaunchApp();
-                 
+            infoForm = new InfoForm();                 
 
             trayIcon.ShowBalloonTip(2000, "VRKnock", "Server Running!", ToolTipIcon.Info);
 
@@ -255,8 +257,8 @@ namespace KnockServer
 
         public static void ShowInfoForm()
         {
-            InfoForm form = new InfoForm();
-            form.Show();
+            infoForm.WindowState = FormWindowState.Normal;
+            infoForm.Show();
         }
 
         private void OnApplicationExit(object sender, EventArgs e)
@@ -268,8 +270,6 @@ namespace KnockServer
 
         void Exit(object sender, EventArgs e)
         {
-
-
             Application.Exit();
         }
     }
